@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="ejml-cdense-0.42">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../JavaLibs/ejml-v0.42-libs/ejml-v0.42-libs/ejml-cdense-0.42.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../JavaLibs/ejml-v0.42-libs/ejml-v0.42-libs/ejml-core-0.42.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../JavaLibs/ejml-v0.42-libs/ejml-v0.42-libs/ejml-ddense-0.42.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../JavaLibs/ejml-v0.42-libs/ejml-v0.42-libs/ejml-dsparse-0.42.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../JavaLibs/ejml-v0.42-libs/ejml-v0.42-libs/ejml-experimental-0.42.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../JavaLibs/ejml-v0.42-libs/ejml-v0.42-libs/ejml-fdense-0.42.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../JavaLibs/ejml-v0.42-libs/ejml-v0.42-libs/ejml-simple-0.42.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../JavaLibs/ejml-v0.42-libs/ejml-v0.42-libs/ejml-zdense-0.42.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
