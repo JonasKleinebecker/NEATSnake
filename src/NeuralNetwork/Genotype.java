@@ -1,7 +1,8 @@
 package NeuralNetwork;
 
+import HelperClasses.Pair;
 import org.ejml.simple.SimpleMatrix;
 
 public abstract class Genotype {
-    public abstract SimpleMatrix[] toPhenotype();
+    public abstract Pair<SimpleMatrix[], SimpleMatrix[]> toPhenotype();
 }

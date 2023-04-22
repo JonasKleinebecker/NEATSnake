@@ -1,4 +1,4 @@
-package NeuralNetwork.ActivationFunction;
+package ActivationFunction;
 
 import org.ejml.simple.SimpleMatrix;
 
