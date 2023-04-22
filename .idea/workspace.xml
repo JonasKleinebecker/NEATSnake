@@ -104,9 +104,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="NeuralNetworkTest.testCalculateForInputs (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NEATSnake" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UnitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="UnitTests" />
+      <option name="MAIN_CLASS_NAME" value="UnitTests.NeuralNetworkTest" />
+      <option name="METHOD_NAME" value="testCalculateForInputs(NeuralNetwork.NeuralNetwork,double[][],double[][],boolean)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NeuralNetworkTest.testCalculateForInputs" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NEATSnake" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UnitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="UnitTests" />
+      <option name="MAIN_CLASS_NAME" value="UnitTests.NeuralNetworkTest" />
+      <option name="METHOD_NAME" value="testCalculateForInputs(NeuralNetwork.NeuralNetwork,double[][],double[][])" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.NeuralNetworkTest" />
+        <item itemvalue="JUnit.NeuralNetworkTest.testCalculateForInputs (1)" />
+        <item itemvalue="JUnit.NeuralNetworkTest.testCalculateForInputs" />
         <item itemvalue="JUnit.NeuralNetworkTest.testCalculate (1)" />
         <item itemvalue="JUnit.NeuralNetworkTest.testCalculate" />
       </list>
@@ -120,7 +154,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1682164482219</updated>
-      <workItem from="1682164483230" duration="13967000" />
+      <workItem from="1682164483230" duration="20862000" />
     </task>
     <servers />
   </component>
