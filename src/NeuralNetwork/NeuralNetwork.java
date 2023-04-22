@@ -27,7 +27,10 @@ public class NeuralNetwork {
 
         SimpleMatrix output = input;
         for(int i = 0; i < weights.length; i++){
-            output = weights[i].mult(output).plus(biases[i]);
+            output = weights[i].mult(output);
+            for(int j = 0; j < output.getNumCols(); j++) {
+                output.setColumn(j, output.getColumn(j).plus(biases[i]));
+            }
             output = activationFunctions[i].apply(output);
         }
         return output;

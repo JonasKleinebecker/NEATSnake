@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69364022-eb5d-413b-8a64-5418c52e12ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/HelperClasses/MatrixOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HelperClasses/Pair.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NeuralNetwork/MatrixGenotype.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/UnitTests/NeuralNetworkTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEATSnake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NEATSnake.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NeuralNetwork/ActivationFunction/ActivationFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActivationFunction/ActivationFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NeuralNetwork/ActivationFunction/IdentityFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActivationFunction/IdentityFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NeuralNetwork/ActivationFunction/ReluFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActivationFunction/ReluFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NeuralNetwork/Genotype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NeuralNetwork/Genotype.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NeuralNetwork/NEATGenotype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NeuralNetwork/NEATGenotype.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NeuralNetwork/NeuralNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NeuralNetwork/NeuralNetwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UnitTests/NeuralNetworkTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UnitTests/NeuralNetworkTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +56,38 @@
       <recent name="NeuralNetwork" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.NeuralNetworkTest">
+    <configuration name="NeuralNetworkTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NEATSnake" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UnitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="UnitTests" />
+      <option name="MAIN_CLASS_NAME" value="UnitTests.NeuralNetworkTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NeuralNetworkTest.testCalculate (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NEATSnake" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UnitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="UnitTests" />
+      <option name="MAIN_CLASS_NAME" value="UnitTests.NeuralNetworkTest" />
+      <option name="METHOD_NAME" value="testCalculate(NeuralNetwork.NeuralNetwork,double[][],double[][])" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="NeuralNetworkTest.testCalculate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="NEATSnake" />
       <extension name="coverage">
@@ -84,6 +106,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.NeuralNetworkTest" />
+        <item itemvalue="JUnit.NeuralNetworkTest.testCalculate (1)" />
         <item itemvalue="JUnit.NeuralNetworkTest.testCalculate" />
       </list>
     </recent_temporary>
@@ -96,11 +120,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1682164482219</updated>
-      <workItem from="1682164483230" duration="9625000" />
+      <workItem from="1682164483230" duration="13967000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="((NeuralNetwork.NeuralNetwork)this).weights" custom="NeuralNetwork.NeuralNetwork" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/NEATSnake$NeuralNetworkTest_testCalculate__1_.ic" NAME="NeuralNetworkTest.testCalculate (1) Coverage Results" MODIFIED="1682185005677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>UnitTests.*</FILTER>
+    </SUITE>
   </component>
 </project>
