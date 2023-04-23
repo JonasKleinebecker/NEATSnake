@@ -1,10 +1,11 @@
-package NeuralNetwork;
+package Genotypes;
 
 import HelperClasses.Pair;
+import Genotypes.Genotype;
 import org.ejml.simple.SimpleMatrix;
 
 // Genotype for when no Genotype-Representation is needed
-public class MatrixGenotype extends Genotype{
+public class MatrixGenotype extends Genotype {
     private SimpleMatrix[] weights;
     private SimpleMatrix[] biases;
     public MatrixGenotype(SimpleMatrix[] weights, SimpleMatrix[] biases){

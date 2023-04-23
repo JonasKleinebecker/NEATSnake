@@ -1,4 +1,4 @@
-package NeuralNetwork;
+package Genotypes;
 
 import HelperClasses.Pair;
 import org.ejml.simple.SimpleMatrix;

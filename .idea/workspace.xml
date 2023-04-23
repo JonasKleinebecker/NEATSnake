@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="69364022-eb5d-413b-8a64-5418c52e12ea" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/ejml_all.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ejml-all-0.42.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ejml-cdense-0.42.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ejml-core-0.42.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ejml-ddense-0.42.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ejml-dsparse-0.42.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ejml-fdense-0.42.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ejml-fsparse-0.42.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ejml-simple-0.42.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ejml-zdense-0.42.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HelperClasses/NodeType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NEATGenes/ConnectionGene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NEATGenes/NodeGene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UnitTests/NeatGenotypeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/ejml_cdense_0_42.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEATSnake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NEATSnake.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NeuralNetwork/Genotype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genotypes/Genotype.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NeuralNetwork/MatrixGenotype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genotypes/MatrixGenotype.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NeuralNetwork/NEATGenotype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genotypes/NEATGenotype.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NeuralNetwork/NeuralNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NeuralNetwork/NeuralNetwork.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UnitTests/NeuralNetworkTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UnitTests/NeuralNetworkTest.java" afterDir="false" />
     </list>
@@ -16,6 +38,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -35,7 +58,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "true",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
@@ -43,7 +67,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/Coding/JavaLibs/ejml-v0.42-libs/ejml-v0.42-libs/ejml-zdense-0.42.jar",
+    "last_opened_file_path": "E:/Coding/Projects/NEATSnake",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15429688",
@@ -53,6 +81,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="HelperClasses" />
       <recent name="NeuralNetwork" />
     </key>
   </component>
@@ -154,12 +183,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1682164482219</updated>
-      <workItem from="1682164483230" duration="20862000" />
+      <workItem from="1682164483230" duration="21595000" />
+      <workItem from="1682289622870" duration="3495000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

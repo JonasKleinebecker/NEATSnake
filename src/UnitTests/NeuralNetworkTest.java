@@ -1,14 +1,13 @@
 package UnitTests;
 
 import ActivationFunction.*;
+import Genotypes.MatrixGenotype;
 import HelperClasses.MatrixOperator;
+import Genotypes.Genotype;
 import org.ejml.data.DenseD2Matrix64F;
-import org.ejml.data.Matrix;
 import org.ejml.simple.SimpleMatrix;
 import NeuralNetwork.*;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayNameGenerator;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;

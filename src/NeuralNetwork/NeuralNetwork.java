@@ -2,6 +2,7 @@ package NeuralNetwork;
 
 import ActivationFunction.ActivationFunction;
 import HelperClasses.Pair;
+import Genotypes.Genotype;
 import org.ejml.simple.SimpleMatrix;
 
 public class NeuralNetwork {
