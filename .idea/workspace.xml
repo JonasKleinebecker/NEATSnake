@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69364022-eb5d-413b-8a64-5418c52e12ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/UnitTests/NeatGenotypeToPhenotypeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Genotypes/InnovationCounter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Genotypes/NEATGenotype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genotypes/NEATGenotype.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NEATGenes/ConnectionGene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NEATGenes/ConnectionGene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UnitTests/NeatGenotypeTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +18,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -64,6 +62,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="Genotypes" />
       <recent name="HelperClasses" />
       <recent name="NeuralNetwork" />
     </key>
@@ -168,7 +167,7 @@
       <updated>1682164482219</updated>
       <workItem from="1682164483230" duration="21595000" />
       <workItem from="1682289622870" duration="7456000" />
-      <workItem from="1682349122367" duration="7565000" />
+      <workItem from="1682349122367" duration="8850000" />
     </task>
     <servers />
   </component>
@@ -179,15 +178,6 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/UnitTests/NeatGenotypeToPhenotypeTest.java</url>
-          <line>138</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Genotypes.NEATGenotype" memberName="connectionGenes" />

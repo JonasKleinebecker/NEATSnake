@@ -21,6 +21,22 @@ public class NEATGenotype extends Genotype {
         this.connectionGenes = connectionGenes;
     }
 
+    public NEATGenotype(List<NodeGene> initialGenes){
+        this.nodeGenes = initialGenes;
+        this.connectionGenes = new ArrayList<>();
+        for(NodeGene inputGene : initialGenes){
+            if(inputGene.getType() == NodeType.HIDDEN){
+                throw new IllegalArgumentException("Initial Genes must not contain any hidden nodes");
+            }
+            else if(inputGene.getType() == NodeType.INPUT){
+                for(NodeGene outputGene : initialGenes){
+                    if(outputGene.getType() == NodeType.OUTPUT){
+                        connectionGenes.add(new ConnectionGene(Math.random(), inputGene, outputGene, true, InnovationCounter.getInnovationNumber(inputGene, outputGene))); //TODO: Should the weight be decided outside this class?
+                    }
+                }
+            }
+        }
+    }
     public void updateNodeLocations(){
         int maxLayer = 0;
 
@@ -121,5 +137,25 @@ public class NEATGenotype extends Genotype {
         //TODO: Add biases
         //TODO: Add recurrent connections
         return new Pair<>(weights, biases);
+    }
+
+    public ConnectionGene getRandomConnectionGene(){
+        return connectionGenes.get((int)(Math.random() * connectionGenes.size()));
+    }
+
+    public NodeGene getRandomNodeGene(){
+        return nodeGenes.get((int)(Math.random() * nodeGenes.size()));
+    }
+    public void createConnection(NodeGene inNode, NodeGene outNode, double weight){
+        connectionGenes.add(new ConnectionGene(weight, inNode, outNode, true, InnovationCounter.getInnovationNumber(inNode, outNode)));
+    }
+    public void splitConnection(ConnectionGene connectionGene){
+        NodeGene inNode = connectionGene.getInNode();
+        NodeGene outNode = connectionGene.getOutNode();
+        connectionGene.setEnabled(false);
+        NodeGene newNode = new NodeGene(-1, NodeType.HIDDEN); //TODO: what ID to set?
+        nodeGenes.add(newNode);
+        createConnection(inNode, newNode, 1);
+        createConnection(newNode, outNode, connectionGene.getWeight());
     }
 }
