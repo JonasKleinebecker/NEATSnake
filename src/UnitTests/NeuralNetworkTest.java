@@ -4,7 +4,6 @@ import ActivationFunction.*;
 import Genotypes.MatrixGenotype;
 import HelperClasses.MatrixOperator;
 import Genotypes.Genotype;
-import org.ejml.data.DenseD2Matrix64F;
 import org.ejml.simple.SimpleMatrix;
 import NeuralNetwork.*;
 import org.junit.jupiter.api.BeforeEach;

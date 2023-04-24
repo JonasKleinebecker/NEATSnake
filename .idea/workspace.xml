@@ -5,27 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69364022-eb5d-413b-8a64-5418c52e12ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/ejml_all.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ejml-all-0.42.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ejml-cdense-0.42.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ejml-core-0.42.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ejml-ddense-0.42.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ejml-dsparse-0.42.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ejml-fdense-0.42.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ejml-fsparse-0.42.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ejml-simple-0.42.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ejml-zdense-0.42.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HelperClasses/NodeType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NEATGenes/ConnectionGene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NEATGenes/NodeGene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/UnitTests/NeatGenotypeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ejml_cdense_0_42.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEATSnake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NEATSnake.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NeuralNetwork/Genotype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genotypes/Genotype.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NeuralNetwork/MatrixGenotype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genotypes/MatrixGenotype.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NeuralNetwork/NEATGenotype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genotypes/NEATGenotype.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NeuralNetwork/NeuralNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NeuralNetwork/NeuralNetwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Genotypes/NEATGenotype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Genotypes/NEATGenotype.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NEATGenes/NodeGene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NEATGenes/NodeGene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UnitTests/NeuralNetworkTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UnitTests/NeuralNetworkTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -184,7 +166,7 @@
       <option name="presentableId" value="Default" />
       <updated>1682164482219</updated>
       <workItem from="1682164483230" duration="21595000" />
-      <workItem from="1682289622870" duration="3495000" />
+      <workItem from="1682289622870" duration="5257000" />
     </task>
     <servers />
   </component>

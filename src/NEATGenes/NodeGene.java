@@ -33,4 +33,12 @@ public class NodeGene {
     public Integer getLayer(){
         return layer;
     }
+
+    public boolean isBias() {
+        return isBias;
+    }
+
+    public int getId() {
+        return id;
+    }
 }
