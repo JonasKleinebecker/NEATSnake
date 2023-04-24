@@ -48,12 +48,4 @@ public class ConnectionGene {
     public void setEnabled(boolean enabled){
         this.enabled = enabled;
     }
-
-    public NodeGene getToNode() {
-        return outNode;
-    }
-
-    public NodeGene getFromNode() {
-        return inNode;
-    }
 }

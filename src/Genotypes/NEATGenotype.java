@@ -16,31 +16,46 @@ public class NEATGenotype extends Genotype {
     List<ConnectionGene> connectionGenes;
     List<NodeGene> nodeGenes;
 
+    public NEATGenotype(List<NodeGene> nodeGenes, List<ConnectionGene> connectionGenes){
+        this.nodeGenes = nodeGenes;
+        this.connectionGenes = connectionGenes;
+    }
+
     public void updateNodeLocations(){
-        List<ConnectionGene> connGenesToUpdate = connectionGenes;
-        List<NodeGene> nodeGenesToUpdate = nodeGenes;
+        int maxLayer = 0;
+
         for(NodeGene nodeGene : nodeGenes){
             if(nodeGene.getType() == NodeType.INPUT){
                 nodeGene.setLayer(0);
             }
         }
-        connectionGenes.sort((a,b) -> { //sort Genes by FromNode Layer, sorting null values to the end
-            if(a.getFromNode().getLayer() != null && b.getFromNode().getLayer() != null){
-                return a.getFromNode().getLayer() - b.getFromNode().getLayer();
+        connectionGenes.sort((a,b) -> { //sort Genes by InNode Layer, sorting null values to the end
+            if(a.getInNode().getLayer() != null && b.getInNode().getLayer() != null){
+                return a.getInNode().getLayer() - b.getInNode().getLayer();
             }
-            else if(a.getFromNode().getLayer() != null){
+            else if(a.getInNode().getLayer() != null){
                 return -1;
             }
-            else if(b.getFromNode().getLayer() != null){
+            else if(b.getInNode().getLayer() != null){
                 return 1;
             }
             else{
                 return 0;
             }
         });
-        for(ConnectionGene connectionGene : connGenesToUpdate){
-            if(connectionGene.getToNode().getLayer() <= connectionGene.getFromNode().getLayer()){
-                connectionGene.getToNode().setLayer(connectionGene.getFromNode().getLayer() + 1);
+        for(ConnectionGene connectionGene : connectionGenes){
+            if(connectionGene.getOutNode().getLayer() == null){
+                connectionGene.getOutNode().setLayer(connectionGene.getInNode().getLayer() + 1);
+                maxLayer = Math.max(maxLayer, connectionGene.getOutNode().getLayer());
+            }
+            else if(connectionGene.getOutNode().getLayer() <= connectionGene.getInNode().getLayer()){
+                connectionGene.getOutNode().setLayer(connectionGene.getInNode().getLayer() + 1);
+                maxLayer = Math.max(maxLayer, connectionGene.getOutNode().getLayer());
+            }
+        }
+        for(NodeGene nodeGene : nodeGenes){
+            if(nodeGene.getType() == NodeType.OUTPUT){
+                nodeGene.setLayer(maxLayer);
             }
         }
         nodeGenes.sort((a,b) -> { //sort Genes by Layer, then by ID
@@ -68,15 +83,15 @@ public class NEATGenotype extends Genotype {
             }
         }
         for(ConnectionGene connectionGene : connectionGenes){
-            int fromLayer = connectionGene.getFromNode().getLayer();
-            int toLayer = connectionGene.getToNode().getLayer();
-            for(int i = fromLayer + 1; i < toLayer; i++){
+            int inLayer = connectionGene.getInNode().getLayer();
+            int outLayer = connectionGene.getOutNode().getLayer();
+            for(int i = inLayer + 1; i < outLayer; i++){
                 layerSizes[i]++;
                 extraNodes[i]++;
             }
         }
         for(int i = 0; i < maxLayer; i++){
-            weights[i] = new SimpleMatrix(layerSizes[i], layerSizes[i+1]);
+            weights[i] = new SimpleMatrix(layerSizes[i+1], layerSizes[i]);
             weights[i].zero();
             biases[i] = new SimpleMatrix(layerSizes[i+1], 1);
             biases[i].zero();
@@ -84,20 +99,23 @@ public class NEATGenotype extends Genotype {
 
         for(int i = 0; i < connectionGenes.size(); i++){
             ConnectionGene connectionGene = connectionGenes.get(i);
-            int fromLayer = connectionGene.getFromNode().getLayer();
-            int toLayer = connectionGene.getToNode().getLayer();
-            int fromPosition = connectionGene.getFromNode().getPositionInLayer();
-            int toPosition = connectionGene.getToNode().getPositionInLayer();
-            if(fromLayer == toLayer - 1){
-                weights[fromLayer].set(toPosition, fromPosition, connectionGene.getWeight());
+            int inLayer = connectionGene.getInNode().getLayer();
+            int outLayer = connectionGene.getOutNode().getLayer();
+            int inPosition = connectionGene.getInNode().getPositionInLayer();
+            int outPosition = connectionGene.getOutNode().getPositionInLayer();
+            if(inLayer == outLayer - 1){
+                weights[inLayer].set(outPosition, inPosition, connectionGene.getWeight());
             }
             else{
-                for(int j = fromLayer; j < toLayer - 1; j++){
-                    int tempToPosition = layerSizes[j] - extraNodes[j] + i;
-                    weights[j].set(tempToPosition, fromPosition, 1);
-                    fromPosition = tempToPosition;
+                double weight = connectionGene.getWeight();
+                for(int j = inLayer; j < outLayer - 1; j++){
+                    int tempOutPosition = layerSizes[j+1] - extraNodes[j+1];
+                    extraNodes[j+1]--;
+                    weights[j].set(tempOutPosition, inPosition, weight);
+                    weight = 1; //only the first connection has the actual weight
+                    inPosition = tempOutPosition;
                 }
-                weights[toLayer - 1].set(toPosition, fromPosition, 1);
+                weights[outLayer - 1].set(outPosition, inPosition, 1);
             }
         }
         //TODO: Add biases
