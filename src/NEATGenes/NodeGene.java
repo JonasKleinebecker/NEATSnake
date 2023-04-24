@@ -10,6 +10,8 @@ public class NodeGene {
 
     Integer layer; //Integer so that we can check if it is null
 
+    int positionInLayer;
+
     boolean isBias;
 
     public NodeGene(int id) {
@@ -40,5 +42,13 @@ public class NodeGene {
 
     public int getId() {
         return id;
+    }
+
+    public void setPositionInLayer(int positionInLayer) {
+        this.positionInLayer = positionInLayer;
+    }
+
+    public int getPositionInLayer() {
+        return positionInLayer;
     }
 }

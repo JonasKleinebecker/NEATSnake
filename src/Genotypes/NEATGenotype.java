@@ -8,6 +8,7 @@ import NEATGenes.NodeGene;
 import org.ejml.simple.SimpleMatrix;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 public class NEATGenotype extends Genotype {
@@ -55,10 +56,14 @@ public class NEATGenotype extends Genotype {
     public Pair<SimpleMatrix[], SimpleMatrix[]> toPhenotype(){
         int maxLayer = nodeGenes.get(nodeGenes.size() - 1).getLayer();
         int []layerSizes = new int[maxLayer + 1];
+        int []extraNodes = new int[maxLayer + 1];
         SimpleMatrix[] weights = new SimpleMatrix[maxLayer];
         SimpleMatrix[] biases = new SimpleMatrix[maxLayer];
-        for(NodeGene nodeGene : nodeGenes){
+
+        for(int i = 0; i < nodeGenes.size(); i++){
+            NodeGene nodeGene = nodeGenes.get(i);
             if(!nodeGene.isBias()){
+                nodeGene.setPositionInLayer(layerSizes[nodeGene.getLayer()]);
                 layerSizes[nodeGene.getLayer()]++;
             }
         }
@@ -67,6 +72,7 @@ public class NEATGenotype extends Genotype {
             int toLayer = connectionGene.getToNode().getLayer();
             for(int i = fromLayer + 1; i < toLayer; i++){
                 layerSizes[i]++;
+                extraNodes[i]++;
             }
         }
         for(int i = 0; i < maxLayer; i++){
@@ -75,7 +81,27 @@ public class NEATGenotype extends Genotype {
             biases[i] = new SimpleMatrix(layerSizes[i+1], 1);
             biases[i].zero();
         }
-        return null;
-        //TODO: Implement
+
+        for(int i = 0; i < connectionGenes.size(); i++){
+            ConnectionGene connectionGene = connectionGenes.get(i);
+            int fromLayer = connectionGene.getFromNode().getLayer();
+            int toLayer = connectionGene.getToNode().getLayer();
+            int fromPosition = connectionGene.getFromNode().getPositionInLayer();
+            int toPosition = connectionGene.getToNode().getPositionInLayer();
+            if(fromLayer == toLayer - 1){
+                weights[fromLayer].set(toPosition, fromPosition, connectionGene.getWeight());
+            }
+            else{
+                for(int j = fromLayer; j < toLayer - 1; j++){
+                    int tempToPosition = layerSizes[j] - extraNodes[j] + i;
+                    weights[j].set(tempToPosition, fromPosition, 1);
+                    fromPosition = tempToPosition;
+                }
+                weights[toLayer - 1].set(toPosition, fromPosition, 1);
+            }
+        }
+        //TODO: Add biases
+        //TODO: Add recurrent connections
+        return new Pair<>(weights, biases);
     }
 }
