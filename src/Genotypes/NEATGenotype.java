@@ -158,4 +158,51 @@ public class NEATGenotype extends Genotype {
         createConnection(inNode, newNode, 1);
         createConnection(newNode, outNode, connectionGene.getWeight());
     }
+
+    public boolean connectionExists(NodeGene inNode, NodeGene outNode) {
+        for(ConnectionGene connectionGene : connectionGenes){
+            if(connectionGene.getInNode() == inNode && connectionGene.getOutNode() == outNode){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ConnectionGene getFirstEnabledConnectionFromOffset(int offset) {
+        if(offset < 0 || offset >= connectionGenes.size()) {
+            throw new IllegalArgumentException("tried to get connection from offset " + offset + " but there are only " + connectionGenes.size() + " connections");
+        }
+        for(int i = offset; i < connectionGenes.size(); i++){
+            if(connectionGenes.get(i).isEnabled()){
+                return connectionGenes.get(i);
+            }
+        }
+        for(int i = 0; i < offset; i++){
+            if(connectionGenes.get(i).isEnabled()){
+                return connectionGenes.get(i);
+            }
+        }
+        return null;
+    }
+
+    public ConnectionGene getFirstDisabledConnectionFromOffset(int offset) {
+        if(offset < 0 || offset >= connectionGenes.size()) {
+            throw new IllegalArgumentException("tried to get connection from offset " + offset + " but there are only " + connectionGenes.size() + " connections");
+        }
+        for(int i = offset; i < connectionGenes.size(); i++){
+            if(!connectionGenes.get(i).isEnabled()){
+                return connectionGenes.get(i);
+            }
+        }
+        for(int i = 0; i < offset; i++){
+            if(!connectionGenes.get(i).isEnabled()){
+                return connectionGenes.get(i);
+            }
+        }
+        return null;
+    }
+
+    public int getNumberOfConnectionGenes() {
+        return connectionGenes.size();
+    }
 }

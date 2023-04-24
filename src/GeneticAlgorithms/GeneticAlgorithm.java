@@ -27,7 +27,7 @@ public class GeneticAlgorithm<T> {
         for(int i=0;i<population.length;i++){
             Pair<Pair<T,Integer>, Pair<T,Integer>> parents = selectionHandler.select(population);
             Pair<T,Integer> child = crossoverHandler.crossover(parents);
-            child = mutationHandler.mutate(child);
+            mutationHandler.mutate(child);
             newPopulation[i] = child;
         }
         population = newPopulation;

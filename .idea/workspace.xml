@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69364022-eb5d-413b-8a64-5418c52e12ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/GeneticAlgorithms/CrossoverHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GeneticAlgorithms/EvaluationHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GeneticAlgorithms/GeneticAlgorithm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GeneticAlgorithms/MutationHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GeneticAlgorithms/ProportionalSelector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GeneticAlgorithms/SelectionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GeneticAlgorithms/TournamentSelector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GeneticAlgorithms/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GeneticAlgorithms/GeneticAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GeneticAlgorithms/MutationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GeneticAlgorithms/MutationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GeneticAlgorithms/NEATMutator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GeneticAlgorithms/NEATMutator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +155,6 @@
         <item itemvalue="JUnit.NeatGenotypeToPhenotypeTest.noBiasNoHiddenNoRecurrentNoLongRangeSortedGenes" />
         <item itemvalue="JUnit.NeatGenotypeToPhenotypeTest.testToPhenotype" />
         <item itemvalue="JUnit.NeuralNetworkTest" />
-        <item itemvalue="JUnit.NeuralNetworkTest.testCalculateForInputs (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -173,7 +168,8 @@
       <updated>1682164482219</updated>
       <workItem from="1682164483230" duration="21595000" />
       <workItem from="1682289622870" duration="7456000" />
-      <workItem from="1682349122367" duration="11317000" />
+      <workItem from="1682349122367" duration="12340000" />
+      <workItem from="1682368099085" duration="2041000" />
     </task>
     <servers />
   </component>
