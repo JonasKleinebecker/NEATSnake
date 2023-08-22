@@ -13,7 +13,7 @@ public class GeneticAlgorithm<T> {
     CrossoverHandler<T> crossoverHandler;
     EvaluationHandler<T> evaluationHandler;
 
-    public GeneticAlgorithm(Pair<T,Integer>[] population, SelectionHandler selectionHandler, MutationHandler mutationHandler, CrossoverHandler crossoverHandler, EvaluationHandler evaluationHandler) {
+    public GeneticAlgorithm(Pair<T,Integer>[] population, SelectionHandler selectionHandler, MutationHandler<T> mutationHandler, CrossoverHandler<T> crossoverHandler, EvaluationHandler<T> evaluationHandler) {
         this.selectionHandler = selectionHandler;
         this.mutationHandler = mutationHandler;
         this.crossoverHandler = crossoverHandler;

@@ -1,6 +1,5 @@
 package GeneticAlgorithms;
 
-import Genotypes.Genotype;
 import HelperClasses.NodeType;
 import HelperClasses.Pair;
 import NEATGenes.ConnectionGene;
@@ -8,15 +7,18 @@ import Genotypes.NEATGenotype;
 import NEATGenes.NodeGene;
 
 import java.util.Map;
+import java.util.Random;
 
 public class NEATMutator implements MutationHandler<NEATGenotype>{
     double mutationRate;
     double weightMutationPower; //Weight is changed by -1 to 1 * weightMutationPower
     Map<String, Double> mutationDistribution;
+    Random randomGenerator;
 
-    public NEATMutator(double mutationRate, double weightMutationPower, double weightMutationDistribution, double splitMutationDistribution, double addMutationDistribution, double disableMutationDistribution, double enableMutationDistribution) {
+    public NEATMutator(double mutationRate, double weightMutationPower, double weightMutationDistribution, double splitMutationDistribution, double addMutationDistribution, double disableMutationDistribution, double enableMutationDistribution, Random randomGenerator) {
         this.mutationRate = mutationRate;
         this.weightMutationPower = weightMutationPower;
+        this.randomGenerator = randomGenerator;
         setProbabilities(Map.of("weight", weightMutationDistribution, "split", splitMutationDistribution, "add", addMutationDistribution, "disable", disableMutationDistribution, "enable", enableMutationDistribution));
     }
 
@@ -24,6 +26,9 @@ public class NEATMutator implements MutationHandler<NEATGenotype>{
         this.mutationDistribution = mutationDistribution;
         double total = 0.0;
         for (double probability : mutationDistribution.values()) {
+            if(probability < 0.0 || probability > 100.0){
+                throw new IllegalArgumentException("Individual probabilities must be between 0% and 100%");
+            }
             total += probability;
         }
         if (total != 100.0) {
@@ -35,8 +40,8 @@ public class NEATMutator implements MutationHandler<NEATGenotype>{
     @Override
     public void mutate(Pair<NEATGenotype, Integer> individual){
         NEATGenotype genotype = individual.getFirst();
-        if(Math.random() < mutationRate){
-            double random = Math.random();
+        if(randomGenerator.nextDouble(1) < mutationRate){
+            double random = randomGenerator.nextDouble(1);
             if(random < mutationDistribution.get("weight")){
                 mutateWeight(genotype);
             }
@@ -56,12 +61,12 @@ public class NEATMutator implements MutationHandler<NEATGenotype>{
     }
 
     private void mutateWeight(NEATGenotype genotype){
-        ConnectionGene connectionGene = genotype.getRandomConnectionGene();
-        connectionGene.setWeight(connectionGene.getWeight() + (Math.random() * 2 - 1) * weightMutationPower);
+        ConnectionGene connectionGene = genotype.getRandomEnabledConnectionGene();
+        connectionGene.setWeight(connectionGene.getWeight() + (randomGenerator.nextDouble(1) * 2 - 1) * weightMutationPower);
     }
 
     private void mutateSplit(NEATGenotype genotype){
-        ConnectionGene connectionGene = genotype.getRandomConnectionGene();
+        ConnectionGene connectionGene = genotype.getRandomEnabledConnectionGene();
         genotype.splitConnection(connectionGene);
     }
 
@@ -76,13 +81,13 @@ public class NEATMutator implements MutationHandler<NEATGenotype>{
             outNode = genotype.getRandomNodeGene();
         }while(outNode.getType() == NodeType.INPUT || outNode.isBias() || genotype.connectionExists(inNode, outNode) || inNode.getLayer() >= outNode.getLayer()); //TODO: Implement recurrent Connections
 
-        genotype.createConnection(inNode, outNode, Math.random());
+        genotype.createConnection(inNode, outNode, randomGenerator.nextDouble(1));
     }
 
     private void mutateDisable(NEATGenotype genotype){
         ConnectionGene connectionGene;
         do{
-            connectionGene = genotype.getFirstEnabledConnectionFromOffset((int) (Math.random() * genotype.getNumberOfConnectionGenes()));
+            connectionGene = genotype.getFirstEnabledConnectionFromOffset((int) (randomGenerator.nextDouble(1) * genotype.getNumberOfConnectionGenes()));
         }while(!connectionGene.isEnabled());
         connectionGene.setEnabled(false);
     }
@@ -90,7 +95,7 @@ public class NEATMutator implements MutationHandler<NEATGenotype>{
     private void mutateEnable(NEATGenotype genotype){
         ConnectionGene connectionGene;
         do{
-            connectionGene = genotype.getFirstDisabledConnectionFromOffset((int) (Math.random() * genotype.getNumberOfConnectionGenes()));
+            connectionGene = genotype.getFirstDisabledConnectionFromOffset((int) (randomGenerator.nextDouble(1) * genotype.getNumberOfConnectionGenes()));
         }while(connectionGene.isEnabled());
         connectionGene.setEnabled(true);
     }

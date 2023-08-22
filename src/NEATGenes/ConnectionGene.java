@@ -9,7 +9,7 @@ public class ConnectionGene {
     boolean isRecurrent;
     int innovationNumber;
 
-    public ConnectionGene(double weight, NodeGene inNode, NodeGene outNode, boolean enabled, int innovationNumber) {
+    public ConnectionGene(NodeGene inNode, NodeGene outNode, double weight, boolean enabled, int innovationNumber) {
         this.weight = weight;
         this.inNode = inNode;
         this.outNode = outNode;

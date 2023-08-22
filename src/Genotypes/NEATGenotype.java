@@ -8,19 +8,25 @@ import org.ejml.simple.SimpleMatrix;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class NEATGenotype extends Genotype {
 
     List<ConnectionGene> connectionGenes;
+    List<ConnectionGene> enabledConnectionGenes;
     List<NodeGene> nodeGenes;
+    Random randomGenerator;
 
-    public NEATGenotype(List<NodeGene> nodeGenes, List<ConnectionGene> connectionGenes){
+    public NEATGenotype(List<NodeGene> nodeGenes, List<ConnectionGene> connectionGenes, Random randomGenerator){
         this.nodeGenes = nodeGenes;
         this.connectionGenes = connectionGenes;
+        this.randomGenerator = randomGenerator;
+        initializeEnabledConnectionList();
     }
 
-    public NEATGenotype(List<NodeGene> initialGenes){
+    public NEATGenotype(List<NodeGene> initialGenes, Random randomGenerator){
         this.nodeGenes = initialGenes;
+        this.randomGenerator = randomGenerator;
         this.connectionGenes = new ArrayList<>();
         for(NodeGene inputGene : initialGenes){
             if(inputGene.getType() == NodeType.HIDDEN){
@@ -29,12 +35,23 @@ public class NEATGenotype extends Genotype {
             else if(inputGene.getType() == NodeType.INPUT){
                 for(NodeGene outputGene : initialGenes){
                     if(outputGene.getType() == NodeType.OUTPUT){
-                        connectionGenes.add(new ConnectionGene(Math.random(), inputGene, outputGene, true, InnovationCounter.getNextInnovationNumber(inputGene, outputGene))); //TODO: Should the weight be decided outside this class?
+                        connectionGenes.add(new ConnectionGene(inputGene, outputGene, randomGenerator.nextDouble(1), true, InnovationCounter.getNextInnovationNumber(inputGene, outputGene))); //TODO: Should the weight be decided outside this class?
                     }
                 }
             }
         }
+        initializeEnabledConnectionList();
     }
+
+    private void initializeEnabledConnectionList(){
+        enabledConnectionGenes = new ArrayList<>();
+        for(ConnectionGene connectionGene : connectionGenes){
+            if(connectionGene.isEnabled()){
+                enabledConnectionGenes.add(connectionGene);
+            }
+        }
+    } 
+
     public void updateNodeLocations(){
         int maxLayer = 0;
 
@@ -137,20 +154,26 @@ public class NEATGenotype extends Genotype {
         return new Pair<>(weights, biases);
     }
 
-    public ConnectionGene getRandomConnectionGene(){
-        return connectionGenes.get((int)(Math.random() * connectionGenes.size()));
+    public ConnectionGene getRandomEnabledConnectionGene(){
+        if(enabledConnectionGenes.size() == 0){
+            throw new IllegalArgumentException("There are no connections");
+        }
+        return enabledConnectionGenes.get(randomGenerator.nextInt(enabledConnectionGenes.size()));
     }
 
     public NodeGene getRandomNodeGene(){
-        return nodeGenes.get((int)(Math.random() * nodeGenes.size()));
+        return nodeGenes.get(randomGenerator.nextInt(nodeGenes.size()));
     }
     public void createConnection(NodeGene inNode, NodeGene outNode, double weight){
-        connectionGenes.add(new ConnectionGene(weight, inNode, outNode, true, InnovationCounter.getNextInnovationNumber(inNode, outNode)));
+        ConnectionGene newConnection = new ConnectionGene(inNode, outNode, weight, true, InnovationCounter.getNextInnovationNumber(inNode, outNode)); 
+        connectionGenes.add(newConnection);
+        enabledConnectionGenes.add(newConnection);
     }
     public void splitConnection(ConnectionGene connectionGene){
         NodeGene inNode = connectionGene.getInNode();
         NodeGene outNode = connectionGene.getOutNode();
         connectionGene.setEnabled(false);
+        enabledConnectionGenes.remove(connectionGene);
         NodeGene newNode = new NodeGene(-1, NodeType.HIDDEN); //TODO: what ID to set?
         nodeGenes.add(newNode);
         createConnection(inNode, newNode, 1);
@@ -202,5 +225,9 @@ public class NEATGenotype extends Genotype {
 
     public int getNumberOfConnectionGenes() {
         return connectionGenes.size();
+    }
+
+    public Integer getNumberOfNodeGenes() {
+        return nodeGenes.size();
     }
 }
