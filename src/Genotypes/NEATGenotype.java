@@ -2,12 +2,10 @@ package Genotypes;
 
 import HelperClasses.NodeType;
 import HelperClasses.Pair;
-import Genotypes.Genotype;
 import NEATGenes.ConnectionGene;
 import NEATGenes.NodeGene;
 import org.ejml.simple.SimpleMatrix;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +29,7 @@ public class NEATGenotype extends Genotype {
             else if(inputGene.getType() == NodeType.INPUT){
                 for(NodeGene outputGene : initialGenes){
                     if(outputGene.getType() == NodeType.OUTPUT){
-                        connectionGenes.add(new ConnectionGene(Math.random(), inputGene, outputGene, true, InnovationCounter.getInnovationNumber(inputGene, outputGene))); //TODO: Should the weight be decided outside this class?
+                        connectionGenes.add(new ConnectionGene(Math.random(), inputGene, outputGene, true, InnovationCounter.getNextInnovationNumber(inputGene, outputGene))); //TODO: Should the weight be decided outside this class?
                     }
                 }
             }
@@ -147,7 +145,7 @@ public class NEATGenotype extends Genotype {
         return nodeGenes.get((int)(Math.random() * nodeGenes.size()));
     }
     public void createConnection(NodeGene inNode, NodeGene outNode, double weight){
-        connectionGenes.add(new ConnectionGene(weight, inNode, outNode, true, InnovationCounter.getInnovationNumber(inNode, outNode)));
+        connectionGenes.add(new ConnectionGene(weight, inNode, outNode, true, InnovationCounter.getNextInnovationNumber(inNode, outNode)));
     }
     public void splitConnection(ConnectionGene connectionGene){
         NodeGene inNode = connectionGene.getInNode();

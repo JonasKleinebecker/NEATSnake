@@ -1,26 +1,38 @@
 package GeneticAlgorithms;
 
+import java.util.Random;
+
 import HelperClasses.Pair;
 
-public class TournamentSelector<T> implements SelectionHandler<T>{
+public class TournamentSelector implements SelectionHandler{
     int tournamentSize;
-    public TournamentSelector(int tournamentSize){
+    Random randomGenerator;
+     
+    public TournamentSelector(Random randomGenerator, int tournamentSize){
         this.tournamentSize = tournamentSize;
+        this.randomGenerator = randomGenerator;
     }
     @Override
-    public Pair<Pair<T, Integer>, Pair<T, Integer>> select(Pair<T, Integer>[] population) {
-        Pair<T, Integer> best = null;
-        Pair<T, Integer> secondBest = null;
+    public Pair<Integer, Integer> select(Integer[] population) {
+        if(tournamentSize > population.length){
+            throw new IllegalArgumentException("Tournament size cannot be greater than population size");
+        }
+        else if(tournamentSize <= 2){
+            throw new IllegalArgumentException("Tournament size must be atleast 2");
+        }
+
+        Integer indexBest = null;
+        Integer indexSecondBest = null;
         for(int i = 0; i < tournamentSize; i++){
-            int index = (int)(Math.random() * population.length);
-            if(best == null || population[index].getSecond() > best.getSecond()){
-                secondBest = best;
-                best = population[index];
+            int index = (randomGenerator.nextInt(population.length));
+            if(indexBest == null || population[index] > population[indexBest]){
+                indexSecondBest = indexBest;
+                indexBest = index;
             }
-            else if(secondBest == null || population[index].getSecond() > secondBest.getSecond()){
-                secondBest = population[index];
+            else if(indexSecondBest == null || population[index] > population[indexSecondBest]){
+                indexSecondBest = index;
             }
         }
-        return new Pair<>(best, secondBest);
+        return new Pair<>(indexBest, indexSecondBest);
     }
 }

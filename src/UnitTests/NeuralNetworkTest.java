@@ -26,9 +26,9 @@ public class NeuralNetworkTest {
         matrixConverter = new MatrixOperator();
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{4}")
     @MethodSource({"neuralNetworkInputProvider", "neuralNetworkWeightProvider", "neuralNetworkTopologyProvider"})
-    public void testCalculateForInputs(NeuralNetwork neuralNetwork, double[][] input, double[][] expectedOutput, boolean shouldFail) {
+    public void testCalculateForInputs(NeuralNetwork neuralNetwork, double[][] input, double[][] expectedOutput, boolean shouldFail, String testname) {
         // Set neural network for testing
         this.neuralNetwork = neuralNetwork;
         double[][] actualOutput;
@@ -126,14 +126,14 @@ public class NeuralNetworkTest {
         NeuralNetwork neuralNetwork5 = new NeuralNetwork(genotype1, activationFunctions2);
 
         return Stream.of(
-                Arguments.of(neuralNetwork1, input, expectedOutput1, false),
-                Arguments.of(neuralNetwork2, input2, expectedOutput2, false),
-                Arguments.of(neuralNetwork3, input, expectedOutput3, true),
-                Arguments.of(neuralNetwork2, input, expectedOutput4, true),
-                Arguments.of(neuralNetwork4, input, expectedOutput4, true),
-                Arguments.of(neuralNetwork5, input, expectedOutput1, true),
+                Arguments.of(neuralNetwork1, input, expectedOutput1, false, "Topology: standard network, 1 hidden layer"),
+                Arguments.of(neuralNetwork2, input2, expectedOutput2, false, "Topology: standard network, 2 hidden layers"),
+                Arguments.of(neuralNetwork3, input, expectedOutput3, true, "Topology: invalid number of weights"),
+                Arguments.of(neuralNetwork2, input, expectedOutput4, true, "Topology: standard network 1 hidden layer, wrong output"),
+                Arguments.of(neuralNetwork4, input, expectedOutput4, true, "Topology: invalid number of biases"),
+                Arguments.of(neuralNetwork5, input, expectedOutput1, true, "Topology: invalid number of activation functions"),
                 // Edge case: test invalid number of inputs
-                Arguments.of(neuralNetwork2, input, expectedOutput4, true)
+                Arguments.of(neuralNetwork2, input, expectedOutput4, true, "Topology: invalid number of inputs")
 
         );
     }
@@ -190,9 +190,9 @@ public class NeuralNetworkTest {
         double[][] expectedOutput3 = new double[][]{{-17}};
 
         return Stream.of(
-                Arguments.of(neuralNetwork1, input, expectedOutput1, false),
-                Arguments.of(neuralNetwork2, input, expectedOutput2, false),
-                Arguments.of(neuralNetwork3, input, expectedOutput3, false)
+                Arguments.of(neuralNetwork1, input, expectedOutput1, false, "Weights: positive values only"),
+                Arguments.of(neuralNetwork2, input, expectedOutput2, false, "Weights: positive and negative values"),
+                Arguments.of(neuralNetwork3, input, expectedOutput3, false, "Weights: positive, negative and 0 values")
         );
     }
 
@@ -237,11 +237,11 @@ public class NeuralNetworkTest {
         double[][] expectedOutput5 = new double[][]{{103.4, 5.4, 29.4, 276000005.4}};
 
         return Stream.of(
-                Arguments.of(neuralNetwork, input1, expectedOutput1, false),
-                Arguments.of(neuralNetwork, input2, expectedOutput2, false),
-                Arguments.of(neuralNetwork, input3, expectedOutput3, false),
-                Arguments.of(neuralNetwork, input4, expectedOutput4, false),
-                Arguments.of(neuralNetwork, input5, expectedOutput5, false)
+                Arguments.of(neuralNetwork, input1, expectedOutput1, false, "Inputs: only positive values"),
+                Arguments.of(neuralNetwork, input2, expectedOutput2, false, "Inputs: only 0 values"),
+                Arguments.of(neuralNetwork, input3, expectedOutput3, false, "Inputs: negative and positive values"),
+                Arguments.of(neuralNetwork, input4, expectedOutput4, false, "Inputs: large number values"),
+                Arguments.of(neuralNetwork, input5, expectedOutput5, false, "Inputs: all kinds of values")
         );
     }
 }
