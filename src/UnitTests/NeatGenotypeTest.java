@@ -236,7 +236,7 @@ public class NeatGenotypeTest {
 
         genome.splitConnection(connectionGenes.get(0));
 
-        assertEquals(4, genome.getNumberOfConnectionGenes());
+        assertEquals(5, genome.getNumberOfConnectionGenes());
         assertEquals(7, genome.getNumberOfNodeGenes());
     }
 }

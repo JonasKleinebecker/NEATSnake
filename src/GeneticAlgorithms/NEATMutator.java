@@ -22,19 +22,31 @@ public class NEATMutator implements MutationHandler<NEATGenotype>{
         setProbabilities(Map.of("weight", weightMutationDistribution, "split", splitMutationDistribution, "add", addMutationDistribution, "disable", disableMutationDistribution, "enable", enableMutationDistribution));
     }
 
-    public void setProbabilities(Map<String, Double> mutationDistribution){
+    private void setProbabilities(Map<String, Double> mutationDistribution){
         this.mutationDistribution = mutationDistribution;
         double total = 0.0;
         for (double probability : mutationDistribution.values()) {
-            if(probability < 0.0 || probability > 100.0){
+            if(probability < 0.0 || probability > 1.0){
                 throw new IllegalArgumentException("Individual probabilities must be between 0% and 100%");
             }
             total += probability;
         }
-        if (total != 100.0) {
+        if (total != 1.0) {
             throw new IllegalArgumentException("Probabilities must add up to 100%");
         }
         this.mutationDistribution = mutationDistribution;
+    }
+
+    public double getMutationRate() {
+        return mutationRate;
+    }
+
+    public double getWeightMutationPower() {
+        return weightMutationPower;
+    }
+
+    public Map<String, Double> getMutationDistribution() {
+        return mutationDistribution;
     }
 
     @Override
@@ -87,7 +99,7 @@ public class NEATMutator implements MutationHandler<NEATGenotype>{
     private void mutateDisable(NEATGenotype genotype){
         ConnectionGene connectionGene;
         do{
-            connectionGene = genotype.getFirstEnabledConnectionFromOffset((int) (randomGenerator.nextDouble(1) * genotype.getNumberOfConnectionGenes()));
+            connectionGene = genotype.getFirstEnabledConnectionFromOffset(randomGenerator.nextInt(genotype.getNumberOfConnectionGenes()));
         }while(!connectionGene.isEnabled());
         connectionGene.setEnabled(false);
     }
@@ -95,7 +107,7 @@ public class NEATMutator implements MutationHandler<NEATGenotype>{
     private void mutateEnable(NEATGenotype genotype){
         ConnectionGene connectionGene;
         do{
-            connectionGene = genotype.getFirstDisabledConnectionFromOffset((int) (randomGenerator.nextDouble(1) * genotype.getNumberOfConnectionGenes()));
+            connectionGene = genotype.getFirstDisabledConnectionFromOffset(randomGenerator.nextInt(genotype.getNumberOfConnectionGenes()));
         }while(connectionGene.isEnabled());
         connectionGene.setEnabled(true);
     }

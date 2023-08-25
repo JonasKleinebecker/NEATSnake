@@ -22,6 +22,7 @@ public class NEATGenotype extends Genotype {
         this.connectionGenes = connectionGenes;
         this.randomGenerator = randomGenerator;
         initializeEnabledConnectionList();
+        updateNodeLocations();
     }
 
     public NEATGenotype(List<NodeGene> initialGenes, Random randomGenerator){
@@ -41,6 +42,7 @@ public class NEATGenotype extends Genotype {
             }
         }
         initializeEnabledConnectionList();
+        updateNodeLocations();
     }
 
     private void initializeEnabledConnectionList(){
@@ -156,7 +158,7 @@ public class NEATGenotype extends Genotype {
 
     public ConnectionGene getRandomEnabledConnectionGene(){
         if(enabledConnectionGenes.size() == 0){
-            throw new IllegalArgumentException("There are no connections");
+            throw new IllegalArgumentException("There are no enabled connections");
         }
         return enabledConnectionGenes.get(randomGenerator.nextInt(enabledConnectionGenes.size()));
     }
@@ -229,5 +231,13 @@ public class NEATGenotype extends Genotype {
 
     public Integer getNumberOfNodeGenes() {
         return nodeGenes.size();
+    }
+
+    public List<ConnectionGene> getConnectionGenes() {
+        return connectionGenes;
+    }
+
+    public List<NodeGene> getNodeGenes() {
+        return nodeGenes;
     }
 }

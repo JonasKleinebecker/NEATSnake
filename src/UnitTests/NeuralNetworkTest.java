@@ -16,13 +16,11 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NeuralNetworkTest {
-    private NeuralNetwork neuralNetwork;
     private MatrixOperator matrixConverter;
 
     @BeforeEach
     public void setUp() {
         // Initialize neural network and matrix converter
-        neuralNetwork = null;
         matrixConverter = new MatrixOperator();
     }
 
@@ -30,7 +28,6 @@ public class NeuralNetworkTest {
     @MethodSource({"neuralNetworkInputProvider", "neuralNetworkWeightProvider", "neuralNetworkTopologyProvider"})
     public void testCalculateForInputs(NeuralNetwork neuralNetwork, double[][] input, double[][] expectedOutput, boolean shouldFail, String testname) {
         // Set neural network for testing
-        this.neuralNetwork = neuralNetwork;
         double[][] actualOutput;
 
         // Check that the actual output is equal to the expected output

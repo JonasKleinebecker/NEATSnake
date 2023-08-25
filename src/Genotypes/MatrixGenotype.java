@@ -1,7 +1,6 @@
 package Genotypes;
 
 import HelperClasses.Pair;
-import Genotypes.Genotype;
 import org.ejml.simple.SimpleMatrix;
 
 // Genotype for when no Genotype-Representation is needed
