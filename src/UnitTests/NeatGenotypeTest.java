@@ -62,7 +62,6 @@ public class NeatGenotypeTest {
         NEATGenotype genome = new NEATGenotype(nodeGenes, connectionGenes, new Random(0));
 
         // call the toPhenotype function
-        genome.updateNodeLocations();
         Pair<SimpleMatrix[], SimpleMatrix[]> result = genome.toPhenotype();
 
         // check the results
@@ -115,7 +114,6 @@ public class NeatGenotypeTest {
         NEATGenotype genome = new NEATGenotype(nodeGenes, connectionGenes, new Random(0));
 
         // call the toPhenotype function
-        genome.updateNodeLocations();
         Pair<SimpleMatrix[], SimpleMatrix[]> result = genome.toPhenotype();
 
         // check the results
@@ -195,13 +193,10 @@ public class NeatGenotypeTest {
         List<NodeGene> nodeGenes = new ArrayList<>();
         // add the nodes in a random order
         nodeGenes.add(inputNodes[1]);
-        nodeGenes.add(hiddenNodes[2]);
         nodeGenes.add(outputNodes[0]);
         nodeGenes.add(hiddenNodes[1]);
         nodeGenes.add(hiddenNodes[0]);
-        nodeGenes.add(outputNodes[1]);
         nodeGenes.add(inputNodes[0]);
-        nodeGenes.add(hiddenNodes[3]);
 
         List<ConnectionGene> connectionGenes = new ArrayList<>();
         //add the connections in a random order

@@ -79,12 +79,11 @@ public class NEATGenotype extends Genotype {
         for(ConnectionGene connectionGene : connectionGenes){
             if(connectionGene.getOutNode().getLayer() == null){
                 connectionGene.getOutNode().setLayer(connectionGene.getInNode().getLayer() + 1);
-                maxLayer = Math.max(maxLayer, connectionGene.getOutNode().getLayer());
             }
             else if(connectionGene.getOutNode().getLayer() <= connectionGene.getInNode().getLayer()){
                 connectionGene.getOutNode().setLayer(connectionGene.getInNode().getLayer() + 1);
-                maxLayer = Math.max(maxLayer, connectionGene.getOutNode().getLayer());
             }
+            maxLayer = Math.max(maxLayer, connectionGene.getOutNode().getLayer());
         }
         for(NodeGene nodeGene : nodeGenes){
             if(nodeGene.getType() == NodeType.OUTPUT){
@@ -224,6 +223,11 @@ public class NEATGenotype extends Genotype {
         }
         return null;
     }
+    public void sortConnectionGenesByInnovationNumber(){
+        connectionGenes.sort((a,b) -> {
+            return a.getInnovationNumber() - b.getInnovationNumber();
+        });
+    }
 
     public int getNumberOfConnectionGenes() {
         return connectionGenes.size();
@@ -239,5 +243,9 @@ public class NEATGenotype extends Genotype {
 
     public List<NodeGene> getNodeGenes() {
         return nodeGenes;
+    }
+
+    public Random getRandomGenerator() {
+        return randomGenerator;
     }
 }
